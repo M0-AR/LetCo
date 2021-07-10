@@ -5,8 +5,9 @@ import java.util.LinkedList;
 
 public class MergeIntervals56 {
     public static void main(String[] args) {
-        System.out.println("MD");
-        merge(new int[][]{{1,3},{2,6},{8,10},{15,18}});
+        Arrays.stream(merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}))
+                .map(Arrays::toString)
+                .forEach(System.out::println);
     }
 
 
