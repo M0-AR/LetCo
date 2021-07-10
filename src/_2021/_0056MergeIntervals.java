@@ -3,7 +3,7 @@ package _2021;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class MergeIntervals56 {
+public class _0056MergeIntervals {
     public static void main(String[] args) {
         Arrays.stream(merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}))
                 .map(Arrays::toString)
