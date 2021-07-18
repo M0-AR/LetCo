@@ -12,7 +12,7 @@ public class _0005LongestPalindromicSubstring {
         int maxLength = 0, start = -1;
 
         for (int i = 0; i < s.length(); i++) {
-            int length = Math.max(getLength(i, i, s), getLength(i, i + i, s));
+            int length = Math.max(getLength(i, i, s), getLength(i, i + 1, s));
 
             if (maxLength < length) {
                 maxLength = length;
