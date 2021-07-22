@@ -24,7 +24,7 @@ public class _0007ReverseInteger {
         }
 
         long outSideRange = Long.parseLong(number);
-        if (outSideRange < Math.pow(-2, 31) || outSideRange > Math.pow(2, 31) - 1)
+        if (outSideRange < Integer.MIN_VALUE || outSideRange > Integer.MAX_VALUE)
             return 0;
 
         if (x < 0) {
