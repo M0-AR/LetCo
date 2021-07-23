@@ -8,7 +8,7 @@ public class _0009PalindromeNumber {
         System.out.println(isPalindrome(-101));
     }
 
-    public static boolean isPalindrome(int x) {
+    public static boolean isPalindrome0(int x) {
         if (x < 0)
             return false;
 
@@ -21,5 +21,20 @@ public class _0009PalindromeNumber {
         }
 
         return true;
+    }
+
+    public static boolean isPalindrome(int x) {
+        if (x < 0) return false;
+
+        int reverse = 0, copy = x;
+        while (copy > 0) {
+            reverse = reverse*10 + copy%10;
+            copy /= 10;
+        }
+
+        if (reverse == x)
+            return true;
+        else
+            return false;
     }
 }
