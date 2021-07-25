@@ -8,21 +8,16 @@ public class _0915PartitionArrayIntoDisjointIntervals {
     }
 
     public static int partitionDisjoint(int[] nums) {
-        int leftMax = 0;
+        int leftMax = nums[0], globalMax = nums[0], index = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-
-           leftMax = Math.max(leftMax, nums[i]);
-           int rightMin = Integer.MAX_VALUE;
-
-           for (int j = i + 1; j < nums.length; j++) {
-                rightMin = Math.min(rightMin, nums[j]);
-           }
-
-           if (leftMax <= rightMin)
-               return i + 1;
+        for (int i = 1; i < nums.length; i++) {
+            globalMax = Math.max(globalMax, nums[i]);
+            if (nums[i] < leftMax) {
+                leftMax = globalMax;
+                index = i;
+            }
         }
 
-        return nums.length;
+        return index + 1;
     }
 }
