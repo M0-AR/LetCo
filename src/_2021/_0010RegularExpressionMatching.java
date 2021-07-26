@@ -1,5 +1,6 @@
 package _2021;
-
+// Todo hard to solve now
+// https://www.youtube.com/watch?v=HAA8mgxlov8
 public class _0010RegularExpressionMatching {
     public static void main(String[] args) {
         System.out.println(isMatch("aa", "a"));
