@@ -1,5 +1,6 @@
 package _2021;
-
+// The code from this nice video
+// https://www.youtube.com/watch?v=JyLrPSJNfYw
 public class _0012IntegerToRoman {
     public static void main(String[] args) {
         System.out.println(intToRoman(3));
@@ -10,26 +11,16 @@ public class _0012IntegerToRoman {
     }
 
     public static String intToRoman(int num) {
-        String result = "";
-        int number = num;
-        while (number != 0) {
-
-            int n = num / 10;
-        }
-
-        return "";
-    }
-
-    public char integerToRoman(int num) {
-        switch (num) {
-            case 1: return 'I';
-            case 5: return 'V';
-            case 10: return 'X';
-            case 50: return 'L';
-            case 100: return 'C';
-            case 500: return 'D';
-            case 1000: return 'M';
-        }
-        return '\0';
+        String[] thousands = {"", "M", "MM", "MMM"};
+        String[] hundreds =
+                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String[] tens =
+                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String[] units =
+                {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return thousands[num / 1000] +
+                hundreds[(num % 1000) / 100] +
+                tens[(num % 100) / 10] +
+                units[num % 10];
     }
 }
