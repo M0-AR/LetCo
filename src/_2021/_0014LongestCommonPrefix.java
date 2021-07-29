@@ -1,5 +1,5 @@
 package _2021;
-
+// Todo: try to optimize solution
 // My solution
 public class _0014LongestCommonPrefix {
     public static void main(String[] args) {
