@@ -1,4 +1,7 @@
 package _2021;
+
+import java.util.Arrays;
+
 // Todo: try to optimize solution
 // My solution
 public class _0014LongestCommonPrefix {
@@ -12,6 +15,25 @@ public class _0014LongestCommonPrefix {
     }
 
     public static String longestCommonPrefix(String[] strs) {
+        if (strs.length == 1)
+            return strs[0];
+
+        Arrays.sort(strs);
+
+        String sol = "";
+        int l = strs.length;
+
+        for (int i = 0; i < strs[0].length(); i++) {
+            if (strs[l - 1].charAt(i) == strs[0].charAt(i))
+                sol = sol + strs[0].charAt(i);
+            else
+                break;
+        }
+
+        return sol;
+    }
+
+    public static String longestCommonPrefix1(String[] strs) {
         if (strs.length == 1)
             return strs[0];
 
@@ -46,4 +68,6 @@ public class _0014LongestCommonPrefix {
 
         return longestCommonPrefix;
     }
+
+
 }
