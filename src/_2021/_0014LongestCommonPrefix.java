@@ -2,8 +2,6 @@ package _2021;
 
 import java.util.Arrays;
 
-// Todo: try to optimize solution
-// My solution
 public class _0014LongestCommonPrefix {
     public static void main(String[] args) {
         System.out.println(longestCommonPrefix(new String[]{"flower","flow","flight"}));
