@@ -3,7 +3,7 @@ package _2021;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+// Todo: Time Limit Exceeded
 public class _0015ThreeSum {
     public static void main(String[] args) {
         /*System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
@@ -26,6 +26,11 @@ public class _0015ThreeSum {
         Arrays.sort(nums);
 
         for (int i = 0; i < nums.length - 2; i++) {
+            // https://www.youtube.com/watch?v=hNRS81I1OZ8
+            if (nums[i] > 0) break;
+
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
             int left = i + 1, right = nums.length - 1;
             while (left < right) {
                 int n = nums[i] + nums[left] + nums[right];
@@ -37,8 +42,11 @@ public class _0015ThreeSum {
                     }else
                         left++;
                 }
+                else if (n < 0) {
+                    left++;
+                    while (nums[left] == nums[left - 1] && left < right) left++;
+                }
                 else if (n > 0) right--;
-                else if (n < 0) left++;
             }
         }
 
