@@ -18,35 +18,35 @@ public class _0015ThreeSum {
 
     public static List<List<Integer>> threeSumOptimizeSolution(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
-        int listIndex = 0;
-
-        if (nums.length == 0) return list;
-        else if (nums.length == 1 && nums[0] == 0) return list;
-
         Arrays.sort(nums);
 
         for (int i = 0; i < nums.length - 2; i++) {
-            // https://www.youtube.com/watch?v=hNRS81I1OZ8
-            if (nums[i] > 0) break;
-
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            if (i != 0 && nums[i] == nums[i - 1]) continue;
 
             int left = i + 1, right = nums.length - 1;
-            while (left < right) {
-                int n = nums[i] + nums[left] + nums[right];
 
-                if (n == 0) {
-                    if (!list.contains(Arrays.asList(nums[i], nums[left], nums[right]))) {
-                        list.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                        left++;
-                    }else
-                        left++;
-                }
-                else if (n < 0) {
+            while (left < right) {
+                if (left != i + 1 && nums[left] == nums[left - 1]) {
                     left++;
-                    while (nums[left] == nums[left - 1] && left < right) left++;
+                    continue;
                 }
-                else if (n > 0) right--;
+
+                if (right != nums.length - 1 && nums[right] == nums[right + 1]) {
+                    right--;
+                    continue;
+                }
+
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if (sum == 0) {
+                    list.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    left++;
+                }
+                else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
             }
         }
 
