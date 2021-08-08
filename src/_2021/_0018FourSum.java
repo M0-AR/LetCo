@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// Todo:
 public class _0018FourSum {
     public static void main(String[] args) {
         System.out.println(fourSum(new int[]{1,0,-1,0,-2,2}, 0));
@@ -13,36 +12,41 @@ public class _0018FourSum {
     }
 
     public static List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-
-
-        if (nums.length == 4) {
-            int sum = nums[0] + nums[1] + nums[2] + nums[nums.length - 1];
-            if (sum == target)
-                result.add(new ArrayList<>(Arrays.asList(nums[0], nums[1], nums[2], nums[nums.length - 1])));
-
-            return result;
-        }
-
-
+        List<List<Integer>> quadruplets = new ArrayList<>();
         Arrays.sort(nums);
 
-        for (int i = 0; i < nums.length - 4; i++) {
-            for (int j = i + 1; j < nums.length - 3; j++) {
-                int left = j + 1;
-                int right = nums.length - 1;
+        for (int i = 0; i < nums.length - 3; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) continue;
+
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                if (j != i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int left = j + 1, right = nums.length - 1;
 
                 while (left < right) {
-                    int sum = nums[i] + nums[left] + nums[j] + nums[right];
-                    if (target == sum && !result.contains(Arrays.asList(nums[i], nums[left], nums[j], nums[right]))) {
-                        result.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[j], nums[right])));
+                    if (left != j + 1 && nums[left] == nums[left - 1]) {
+                        left++;
+                        continue;
                     }
 
-                    if (sum <= 0) left++;
-                    else right--;
+                    if (right != nums.length - 1 && nums[right] == nums[right + 1]) {
+                        right--;
+                        continue;
+                    }
+
+                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
+
+                    if (sum == target) {
+                        quadruplets.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        left++;
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        right--;
+                    }
                 }
             }
         }
-        return result;
+        return quadruplets;
     }
 }
