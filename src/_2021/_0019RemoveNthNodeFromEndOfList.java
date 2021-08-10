@@ -19,27 +19,21 @@ public class _0019RemoveNthNodeFromEndOfList {
     }
 
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode newListNode = head;
+       ListNode sHead = new ListNode(), slow = sHead, fast = sHead;
+       sHead.next = head;
 
-        ArrayList<ListNode> listNode = new ArrayList<>();
-        while (newListNode != null) {
-            listNode.add(newListNode);
-            newListNode = newListNode.next;
+        for (int i = 0; i <= n; i++) {
+            fast = fast.next;
         }
 
-        System.out.println(listNode);
-
-        int size = listNode.size();
-        listNode.remove(size-n);
-
-        ListNode result = new ListNode(listNode.get(0).val);
-        ListNode headResult = result;
-        for (int i = 1; i < listNode.size(); i++) {
-            headResult.next = new ListNode(listNode.get(i).val);
-            headResult = headResult.next;
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
 
-        return result;
+        slow.next = slow.next.next;
+
+        return sHead.next;
     }
 
     static class ListNode {
