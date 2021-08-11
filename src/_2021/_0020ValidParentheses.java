@@ -1,7 +1,6 @@
 package _2021;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Stack;
 
 public class _0020ValidParentheses {
     public static void main(String[] args) {
@@ -10,21 +9,27 @@ public class _0020ValidParentheses {
         System.out.println(isValid("(]"));
         System.out.println(isValid("([)]"));
         System.out.println(isValid("{[]}"));
+        System.out.println(isValid("([}}])"));
     }
 
     public static boolean isValid(String s) {
-        Map<Character, Character> characters =
-                new HashMap<Character, Character>(){{
-                    put('(', ')');
-                    put('{', '}');
-                    put('[', ']');
-        }};
+       if (s.length() % 2 != 0) return false;
 
-        System.out.println(characters.get(')'));
-
-        for (int i = 0; i < s.length(); i+=2) {
-
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else if (c == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
+            } else if (c == '}' && !stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
+            } else if (c == ']' && !stack.isEmpty() && stack.peek() == '[') {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
         }
-        return true;
+
+        return stack.isEmpty();
     }
 }
