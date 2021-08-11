@@ -1,12 +1,5 @@
 package _2021;
 
-import com.sun.xml.internal.bind.v2.util.StackRecorder;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
-
 public class _0019RemoveNthNodeFromEndOfList {
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
