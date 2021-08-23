@@ -1,6 +1,6 @@
 package _2021;
 
-// Todo: when input [] the output should be [] not [0].
+// Todo: try to improve time complexity.
 public class _0023MergeKSortedLists {
     public static void main(String[] args) {
         ListNode l = mergeKLists(new ListNode[]{new ListNode(1, new ListNode(4, new ListNode(5))),
@@ -17,6 +17,7 @@ public class _0023MergeKSortedLists {
 
 
     public static ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length == 0) return null;
         if (lists.length == 1) return lists[0];
         ListNode listNodes = new ListNode();
         for (int i = 0; i < lists.length - 1; i++) {
