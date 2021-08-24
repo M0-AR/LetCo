@@ -4,12 +4,16 @@ package _2021;
 // Todo: See the solution again.
 public class _0024SwapNodesInPairs {
     public static void main(String[] args) {
-        ListNode l = swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
-        ListNode l1 = swapPairs(new ListNode(1, new ListNode(2, new ListNode(3))));
+        printNodes(swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))))));
+        printNodes(swapPairs(new ListNode(1, new ListNode(2, new ListNode(3)))));
+
+    }
+    public static void printNodes(ListNode l) {
         while (l != null) {
             System.out.print(l.val + ", ");
             l = l.next;
         }
+        System.out.println();
     }
 
     public static ListNode swapPairs(ListNode head) {
@@ -26,7 +30,7 @@ public class _0024SwapNodesInPairs {
             current = current.next.next;
         }
 
-        return head;
+        return temp.next;
     }
 
      public static class ListNode {
