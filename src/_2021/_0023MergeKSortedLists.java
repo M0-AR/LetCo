@@ -11,8 +11,6 @@ public class _0023MergeKSortedLists {
             System.out.print(l.val + ", ");
             l = l.next;
         }
-
-        l = mergeKLists(new ListNode[]{});
     }
 
 
