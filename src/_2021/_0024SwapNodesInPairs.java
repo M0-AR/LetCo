@@ -1,5 +1,7 @@
 package _2021;
 
+// Solution by: https://www.youtube.com/watch?v=-xwX521Ija4
+// Todo: See the solution again.
 public class _0024SwapNodesInPairs {
     public static void main(String[] args) {
         ListNode l = swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
@@ -11,26 +13,17 @@ public class _0024SwapNodesInPairs {
     }
 
     public static ListNode swapPairs(ListNode head) {
-        if (head == null) return null;
-        if (head.next == null) return head;
-        ListNode first = head, second = head.next, temp = null;
-        boolean firstRound = true;
-        while(true) {
-            if (temp != null) temp.next = second;
-            if (second != null) {
-                first.next = second.next;
-                second.next = first;
-            }
+        ListNode temp = new ListNode(0);
+        temp.next = head;
+        ListNode current = temp;
 
-            if (firstRound) {
-                head = second;
-                firstRound = false;
-            }
-            temp = first;
-            if (first == null) break;
-            first = first.next;
-            if (first == null) break;
-            second = first.next;
+        while (current.next != null && current.next.next != null) {
+            ListNode first = current.next;
+            ListNode second = current.next.next;
+            first.next = second.next;
+            current.next = second;
+            current.next.next = first;
+            current = current.next.next;
         }
 
         return head;
