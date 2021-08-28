@@ -1,7 +1,6 @@
 package _2021;
 
 // Solution by: https://www.youtube.com/watch?v=-xwX521Ija4
-// Todo: See the solution again.
 public class _0024SwapNodesInPairs {
     public static void main(String[] args) {
         printNodes(swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))))));
@@ -16,7 +15,7 @@ public class _0024SwapNodesInPairs {
         System.out.println();
     }
 
-    public static ListNode swapPairs(ListNode head) {
+    public static ListNode swapPairs1(ListNode head) {
         ListNode temp = new ListNode(0);
         temp.next = head;
         ListNode current = temp;
@@ -31,6 +30,21 @@ public class _0024SwapNodesInPairs {
         }
 
         return temp.next;
+    }
+
+    public static ListNode swapPairs(ListNode head) {
+        if((head == null) || (head.next == null))
+        {
+            return head;
+        }
+
+        ListNode storage = head;
+        ListNode storage2 = head.next;
+        head.next = swapPairs(storage2.next);
+        storage2.next = storage;
+
+
+        return storage2;
     }
 
      public static class ListNode {
